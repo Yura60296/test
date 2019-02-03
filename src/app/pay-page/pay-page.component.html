@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<ul *ngIf="isLoaded" class="categories">
+				<li *ngFor="let category of categories" routerLinkActive="active">
+					<a [routerLink]="['/'+category.id]">{{ category.name }}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<div *ngIf="isLoaded" class="scroll">
+				<app-services *ngIf="url.length === 1"></app-services>
+				<app-one-service *ngIf="url.length === 2"></app-one-service>
+			</div>
+		</div>
+	</div>
+</div>

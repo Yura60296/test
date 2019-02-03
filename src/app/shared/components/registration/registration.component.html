@@ -1,0 +1,44 @@
+<div class="wrap">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()">
+      <div>
+          <span class="cross" (click)="closeModal()">x</span>
+          <span class="title">Создать аккаунт</span>
+          <div>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}">
+              <label for="email">Email:</label>
+              <span class="errors"
+                *ngIf="form.get('email').invalid && form.get('email').touched">
+                  <span *ngIf="form.get('email').errors['required']">Это обязательное поле.</span>      
+                  <span *ngIf="form.get('email').errors['email']">Email введен некорректно.</span>      
+              </span>
+          </div>
+          <div>
+              <input
+                id="password"
+                type="password"
+                formControlName="password"
+                [ngClass]="{'invalid': form.get('password').invalid && form.get('password').touched}">
+              <label for="password">Пароль:</label>
+              <span class="errors"
+                *ngIf="form.get('password').invalid && form.get('password').touched">
+                    <span *ngIf="form.get('password').errors['required']">Это обязательное поле.</span>
+                    <span
+                      *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+                          Пароль должен быть больше {{ form.get('password').errors['minlength']['requiredLength'] }} символов. Сейчас {{ form.get('password').errors['minlength']['actualLength'] }}
+                    </span>
+              </span>
+          </div>
+      </div>
+      <div>
+          <button
+            type="submit"
+            [disabled]="form.invalid && form.disable">Создать</button>
+      </div>
+  </form>
+</div>

@@ -1,0 +1,34 @@
+<div class="wrapper">
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<ul>
+						<li><a [routerLink]="['/']">ЛОГО</a></li>
+						<li><a [routerLink]="['/services']" routerLinkActive="active">Услуги</a></li>
+						<li><a [routerLink]="['/about']" routerLinkActive="active">О нас</a></li>
+						<li><a [routerLink]="['/faq']" routerLinkActive="active">faq</a></li>
+						<li><a [routerLink]="['/tariffs']" routerLinkActive="active">Тарифы</a></li>
+						<li><a [routerLink]="['/bezopasnost']" routerLinkActive="active">Безопасность</a></li>
+						<li><a [routerLink]="['/legal']" routerLinkActive="active">Правовая информация</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<button (click)="openModalLogin()">Войти</button>
+					<button (click)="openModalReg()">Зарегестрироваться</button>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="message" class="message">{{message}}</div>
+		<app-login *ngIf="loginModal" (loginComponent)="mesLogin($event)"></app-login>
+		<app-registration *ngIf="regModal" (regComponent)="mesReg($event)"></app-registration>
+	</header>
+
+	<main>
+		<router-outlet></router-outlet>
+	</main>
+
+	<footer>
+		Copyright 2019
+	</footer>
+</div>

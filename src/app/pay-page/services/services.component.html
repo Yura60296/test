@@ -1,0 +1,5 @@
+<div class="row">
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2" *ngFor="let service of services">
+		<a class="service-item" [routerLink]="['/'+service.category+'/'+service.path]">{{service.name}}</a>
+	</div>
+</div>
